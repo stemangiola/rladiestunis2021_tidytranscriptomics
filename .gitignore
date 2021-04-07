@@ -1,0 +1,10 @@
+.Rproj.user
+doc
+Meta
+.RData
+.Rhistory
+*.Rproj
+rladiestunis2021tidytranscriptomics.Rcheck/
+rladiestunis2021tidytranscriptomics*.tar.gz
+rladiestunis2021tidytranscriptomics*.tgz
+dev
