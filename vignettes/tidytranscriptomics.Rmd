@@ -941,32 +941,6 @@ We can easily summarise the results. For example, we can see how cell type class
 pbmc %>% count(label, first.labels)
 ```
 
-## Pseudobulk analyses
-
-It is sometime useful to aggregate cell-wise transcript abundance into pseudobulk samples. It is possible to explore data and perform hypothesis testing with tools and data-source that we are more familiar with. For example, we can use edgeR in tidybulk to perform differential expression testing. For more details on pseudobulk analysis see [here](https://hbctraining.github.io/scRNA-seq/lessons/pseudobulk_DESeq2_scrnaseq.html).
-
-### Data exploration using pseudobulk samples
-
-To do this, we will load a helper function called `aggregate_cells` from [GitHub Gist](https://gist.github.com/stemangiola/ebce5a3f931b298611b56680d39c073c) and use it to create a group for each sample.
-
-```{r warning=FALSE, message=FALSE}
-# Load aggregate function
-devtools::source_gist("889e4089a0e5ca2649d3c9164e3b542e")
-# Aggregate
-pbmc_bulk = 
-  rladiestunis2021tidytranscriptomics::pbmc %>% 
-  aggregate_cells(file) 
-pbmc_bulk
-```
-
-```{r}
-pbmc_bulk %>%
-  
-  # Tidybulk operations
-  tidybulk::identify_abundant() %>%
-  tidybulk::scale_abundance()
-```
-
 ## Key Points
 - Some basic steps of a single-cell RNA sequencing analysis are dimensionality reduction, cluster identification and cell type classification
 - `tidySingleCellExperiment` is an invisible layer that operates on a `SingleCellExperiment` object and enables us to visualise and manipulate data as if it were a tidy data frame.
