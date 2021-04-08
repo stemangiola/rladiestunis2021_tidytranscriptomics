@@ -1,4 +1,4 @@
-FROM bioconductor/bioconductor_docker:RELEASE_3_12
+FROM bioconductor/bioconductor_docker:devel
 
 WORKDIR /home/rstudio
 
@@ -9,6 +9,9 @@ RUN apt-get update && \
   apt-get install -y libgit2-dev
 
 RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install(ask=FALSE)"
+
+## To fix preprocessCore error https://github.com/stemangiola/tidybulk/issues/145
+RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install('preprocessCore', configure.args='--disable-threading')"
 
 RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories())"
 
