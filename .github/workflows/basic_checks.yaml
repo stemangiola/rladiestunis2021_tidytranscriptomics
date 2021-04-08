@@ -50,15 +50,14 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "error", check_dir = "check")
         shell: Rscript {0}
     
-      # Commenting out til get first version passing other actions    
-      # - uses: docker/build-push-action@v1
-      #   with:
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-      #     repository: stemangiola/rladiestunis2021_tidytranscriptomics
-      #     tag_with_ref: true
-      #     tag_with_sha: true
-      #     tags: rladiestunis2021
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: stemangiola/rladiestunis2021_tidytranscriptomics
+          tag_with_ref: true
+          tag_with_sha: true
+          tags: rladiestunis2021
 
       - name: Build pkgdown
         run: |
