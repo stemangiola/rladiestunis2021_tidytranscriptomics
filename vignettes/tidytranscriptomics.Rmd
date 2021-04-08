@@ -21,9 +21,7 @@ knitr::opts_chunk$set(
 
 # Workshop introduction
 
-Background information and setup instructions for this workshop can be found [here](https://stemangiola.github.io/rladiestunis2021_tidytranscriptomics/articles/background.html). 
-
-This workshop will present how to perform analysis of RNA sequencing data following the tidy data paradigm [@wickham2014tidy]. The tidy data paradigm provides a standard way to organise data values within a dataset, where each variable is a column, each observation is a row, and data is manipulated using an easy-to-understand vocabulary. Most importantly, the data structure remains consistent across manipulation and analysis functions. This can be achieved for RNA sequencing data with the [tidybulk](https://stemangiola.github.io/tidybulk/), [tidySummarizedExperiment](https://stemangiola.github.io/tidySummarizedExperiment/) and [tidySingleCellExperiment](https://stemangiola.github.io/tidySingleCellExperiment/) packages. These packages are part of the tidytranscriptomics suite that introduces a tidy approach to RNA sequencing data representation and analysis. The roadmap for the development of the tidytranscriptomics packages is shown in the figure below.
+[tidybulk](https://stemangiola.github.io/tidybulk/), [tidySummarizedExperiment](https://stemangiola.github.io/tidySummarizedExperiment/) and [tidySingleCellExperiment](https://stemangiola.github.io/tidySingleCellExperiment/) are part of the tidytranscriptomics suite that introduces a tidy approach to RNA sequencing data representation and analysis. The roadmap for the development of the tidytranscriptomics packages is shown in the figure below.
 
 
 ```{r, echo=FALSE, out.width = "600px"}
@@ -470,10 +468,7 @@ counts_de %>%
   custom_theme
 ```
 
-A more informative plot, integrating some of the packages in tidyverse.
-
-
-We'll extract the symbols for a few top genes (by P value) to use in some of the plots we will make.
+We'll extract the symbols for a few top genes (by P value) to use in a more informative volcano plot, integrating some of the packages in tidyverse.
 
 ```{r}
 topgenes_symbols <-
@@ -482,6 +477,8 @@ topgenes_symbols <-
   arrange(PValue) %>%
   head(6) %>%
   pull(symbol)
+
+topgenes_symbols
 ```
 
 ```{r out.width = "70%", warning=FALSE}
