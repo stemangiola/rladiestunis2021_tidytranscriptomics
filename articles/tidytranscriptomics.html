@@ -185,20 +185,20 @@
 <span class="va">airway</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 512,816 x 13</span>
 <span class="co">#&gt; [90m# Transcripts=64102 | Samples=8 | Assays=counts[39m</span>
-<span class="co">#&gt;    transcript sample counts SampleName cell  dex   albut Run   avgLength</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt;</span>
-<span class="co">#&gt;  1 ENSG00000… SRR10…    679 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  2 ENSG00000… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  3 ENSG00000… SRR10…    467 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  4 ENSG00000… SRR10…    260 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  5 ENSG00000… SRR10…     60 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  6 ENSG00000… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  7 ENSG00000… SRR10…   3251 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  8 ENSG00000… SRR10…   1433 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  9 ENSG00000… SRR10…    519 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt; 10 ENSG00000… SRR10…    394 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt; # … with 40 more rows, and 4 more variables: Experiment &lt;fct&gt;, Sample &lt;fct&gt;,</span>
-<span class="co">#&gt; #   BioSample &lt;fct&gt;, GenomicRanges &lt;list&gt;</span></code></pre></div>
+<span class="co">#&gt;    feature sample counts SampleName cell  dex   albut Run   avgLength Experiment</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;     </span>
+<span class="co">#&gt;  1 ENSG00… SRR10…    679 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  2 ENSG00… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  3 ENSG00… SRR10…    467 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  4 ENSG00… SRR10…    260 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  5 ENSG00… SRR10…     60 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  6 ENSG00… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  7 ENSG00… SRR10…   3251 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  8 ENSG00… SRR10…   1433 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  9 ENSG00… SRR10…    519 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt; 10 ENSG00… SRR10…    394 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt; # … with 40 more rows, and 3 more variables: Sample &lt;fct&gt;, BioSample &lt;fct&gt;,</span>
+<span class="co">#&gt; #   coordinate &lt;list&gt;</span></code></pre></div>
 <p>Now we can more easily see the data. The airway object contains information about genes and samples, the first column has the Ensembl gene identifier, the second column has the sample identifier and the third column has the gene transcription abundance. The abundance is the number of reads aligning to the gene in each experimental sample. The remaining columns include sample information. The dex column tells us whether the samples are treated or untreated and the cell column tells us what cell line they are from.</p>
 <p>We can still interact with the tidy SummarizedExperiment object using commands for SummarizedExperiment objects.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -215,20 +215,20 @@
 <code class="sourceCode R"><span class="va">airway</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/tidySummarizedExperiment/man/dplyr-methods.html">filter</a></span><span class="op">(</span><span class="va">dex</span> <span class="op">==</span> <span class="st">"trt"</span><span class="op">)</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 256,408 x 13</span>
 <span class="co">#&gt; [90m# Transcripts=64102 | Samples=4 | Assays=counts[39m</span>
-<span class="co">#&gt;    transcript sample counts SampleName cell  dex   albut Run   avgLength</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt;</span>
-<span class="co">#&gt;  1 ENSG00000… SRR10…    448 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  2 ENSG00000… SRR10…      0 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  3 ENSG00000… SRR10…    515 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  4 ENSG00000… SRR10…    211 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  5 ENSG00000… SRR10…     55 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  6 ENSG00000… SRR10…      0 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  7 ENSG00000… SRR10…   3679 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  8 ENSG00000… SRR10…   1062 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt;  9 ENSG00000… SRR10…    380 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt; 10 ENSG00000… SRR10…    236 GSM1275863 N613… trt   untrt SRR1…       126</span>
-<span class="co">#&gt; # … with 40 more rows, and 4 more variables: Experiment &lt;fct&gt;, Sample &lt;fct&gt;,</span>
-<span class="co">#&gt; #   BioSample &lt;fct&gt;, GenomicRanges &lt;list&gt;</span></code></pre></div>
+<span class="co">#&gt;    feature sample counts SampleName cell  dex   albut Run   avgLength Experiment</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;     </span>
+<span class="co">#&gt;  1 ENSG00… SRR10…    448 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  2 ENSG00… SRR10…      0 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  3 ENSG00… SRR10…    515 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  4 ENSG00… SRR10…    211 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  5 ENSG00… SRR10…     55 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  6 ENSG00… SRR10…      0 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  7 ENSG00… SRR10…   3679 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  8 ENSG00… SRR10…   1062 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt;  9 ENSG00… SRR10…    380 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt; 10 ENSG00… SRR10…    236 GSM1275863 N613… trt   untrt SRR1…       126 SRX384346 </span>
+<span class="co">#&gt; # … with 40 more rows, and 3 more variables: Sample &lt;fct&gt;, BioSample &lt;fct&gt;,</span>
+<span class="co">#&gt; #   coordinate &lt;list&gt;</span></code></pre></div>
 <p>We can use <code>select</code> to choose columns, for example, to see the sample, cell line and treatment columns.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">airway</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/tidySummarizedExperiment/man/dplyr-methods.html">select</a></span><span class="op">(</span><span class="va">sample</span>, <span class="va">cell</span>, <span class="va">dex</span><span class="op">)</span>
@@ -280,7 +280,7 @@
   <span class="va">airway</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/tidySummarizedExperiment/man/dplyr-methods.html">mutate</a></span><span class="op">(</span>sample_name <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">sample</span>, <span class="st">"SRR1039"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/tidySummarizedExperiment/man/dplyr-methods.html">mutate</a></span><span class="op">(</span>symbol <span class="op">=</span> <span class="fu">AnnotationDbi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html">mapIds</a></span><span class="op">(</span><span class="fu">org.Hs.eg.db</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/org.Hs.eg.db/man/org.Hs.egBASE.html">org.Hs.eg.db</a></span>,
-    keys <span class="op">=</span> <span class="va">transcript</span>,
+    keys <span class="op">=</span> <span class="va">feature</span>,
     keytype <span class="op">=</span> <span class="st">"ENSEMBL"</span>,
     column <span class="op">=</span> <span class="st">"SYMBOL"</span>,
     multiVals <span class="op">=</span> <span class="st">"first"</span>
@@ -291,20 +291,20 @@
 <span class="va">counts</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 512,816 x 15</span>
 <span class="co">#&gt; [90m# Transcripts=64102 | Samples=8 | Assays=counts[39m</span>
-<span class="co">#&gt;    transcript sample counts SampleName cell  dex   albut Run   avgLength</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt;</span>
-<span class="co">#&gt;  1 ENSG00000… SRR10…    679 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  2 ENSG00000… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  3 ENSG00000… SRR10…    467 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  4 ENSG00000… SRR10…    260 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  5 ENSG00000… SRR10…     60 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  6 ENSG00000… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  7 ENSG00000… SRR10…   3251 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  8 ENSG00000… SRR10…   1433 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  9 ENSG00000… SRR10…    519 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt; 10 ENSG00000… SRR10…    394 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt; # … with 40 more rows, and 6 more variables: Experiment &lt;fct&gt;, Sample &lt;fct&gt;,</span>
-<span class="co">#&gt; #   BioSample &lt;fct&gt;, sample_name &lt;chr&gt;, symbol &lt;chr&gt;, GenomicRanges &lt;list&gt;</span></code></pre></div>
+<span class="co">#&gt;    feature sample counts SampleName cell  dex   albut Run   avgLength Experiment</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;     </span>
+<span class="co">#&gt;  1 ENSG00… SRR10…    679 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  2 ENSG00… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  3 ENSG00… SRR10…    467 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  4 ENSG00… SRR10…    260 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  5 ENSG00… SRR10…     60 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  6 ENSG00… SRR10…      0 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  7 ENSG00… SRR10…   3251 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  8 ENSG00… SRR10…   1433 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  9 ENSG00… SRR10…    519 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt; 10 ENSG00… SRR10…    394 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt; # … with 40 more rows, and 5 more variables: Sample &lt;fct&gt;, BioSample &lt;fct&gt;,</span>
+<span class="co">#&gt; #   sample_name &lt;chr&gt;, symbol &lt;chr&gt;, coordinate &lt;list&gt;</span></code></pre></div>
 </div>
 <div id="filtering-lowly-transcribed-genes" class="section level2">
 <h2 class="hasAnchor">
@@ -319,21 +319,20 @@
 <span class="va">counts_filtered</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 127,408 x 16</span>
 <span class="co">#&gt; [90m# Transcripts=15926 | Samples=8 | Assays=counts[39m</span>
-<span class="co">#&gt;    transcript sample counts SampleName cell  dex   albut Run   avgLength</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt;</span>
-<span class="co">#&gt;  1 ENSG00000… SRR10…    679 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  2 ENSG00000… SRR10…    467 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  3 ENSG00000… SRR10…    260 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  4 ENSG00000… SRR10…     60 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  5 ENSG00000… SRR10…   3251 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  6 ENSG00000… SRR10…   1433 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  7 ENSG00000… SRR10…    519 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  8 ENSG00000… SRR10…    394 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt;  9 ENSG00000… SRR10…    172 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt; 10 ENSG00000… SRR10…   2112 GSM1275862 N613… untrt untrt SRR1…       126</span>
-<span class="co">#&gt; # … with 40 more rows, and 7 more variables: Experiment &lt;fct&gt;, Sample &lt;fct&gt;,</span>
-<span class="co">#&gt; #   BioSample &lt;fct&gt;, sample_name &lt;chr&gt;, symbol &lt;chr&gt;, .abundant &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   GenomicRanges &lt;list&gt;</span></code></pre></div>
+<span class="co">#&gt;    feature sample counts SampleName cell  dex   albut Run   avgLength Experiment</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;     </span>
+<span class="co">#&gt;  1 ENSG00… SRR10…    679 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  2 ENSG00… SRR10…    467 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  3 ENSG00… SRR10…    260 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  4 ENSG00… SRR10…     60 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  5 ENSG00… SRR10…   3251 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  6 ENSG00… SRR10…   1433 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  7 ENSG00… SRR10…    519 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  8 ENSG00… SRR10…    394 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt;  9 ENSG00… SRR10…    172 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt; 10 ENSG00… SRR10…   2112 GSM1275862 N613… untrt untrt SRR1…       126 SRX384345 </span>
+<span class="co">#&gt; # … with 40 more rows, and 6 more variables: Sample &lt;fct&gt;, BioSample &lt;fct&gt;,</span>
+<span class="co">#&gt; #   sample_name &lt;chr&gt;, symbol &lt;chr&gt;, .abundant &lt;lgl&gt;, coordinate &lt;list&gt;</span></code></pre></div>
 <p>After running <code>keep_abundant</code> we have a column called <code>.abundant</code> containing TRUE (<code>identify_abundant</code> would have TRUE/FALSE).</p>
 </div>
 <div id="scaling-counts-to-normalise" class="section level2">
@@ -348,22 +347,22 @@
 <span class="va">counts_scaled</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 127,408 x 19</span>
 <span class="co">#&gt; [90m# Transcripts=15926 | Samples=8 | Assays=counts, counts_scaled[39m</span>
-<span class="co">#&gt;    transcript sample counts counts_scaled SampleName cell  dex   albut Run  </span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;</span>
-<span class="co">#&gt;  1 ENSG00000… SRR10…    679         961.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  2 ENSG00000… SRR10…    467         661.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  3 ENSG00000… SRR10…    260         368.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  4 ENSG00000… SRR10…     60          84.9 GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  5 ENSG00000… SRR10…   3251        4601.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  6 ENSG00000… SRR10…   1433        2028.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  7 ENSG00000… SRR10…    519         734.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  8 ENSG00000… SRR10…    394         558.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  9 ENSG00000… SRR10…    172         243.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt; 10 ENSG00000… SRR10…   2112        2989.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;    feature sample counts counts_scaled SampleName cell  dex   albut Run  </span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;</span>
+<span class="co">#&gt;  1 ENSG00… SRR10…    679         961.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  2 ENSG00… SRR10…    467         661.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  3 ENSG00… SRR10…    260         368.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  4 ENSG00… SRR10…     60          84.9 GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  5 ENSG00… SRR10…   3251        4601.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  6 ENSG00… SRR10…   1433        2028.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  7 ENSG00… SRR10…    519         734.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  8 ENSG00… SRR10…    394         558.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  9 ENSG00… SRR10…    172         243.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt; 10 ENSG00… SRR10…   2112        2989.  GSM1275862 N613… untrt untrt SRR1…</span>
 <span class="co">#&gt; # … with 40 more rows, and 10 more variables: avgLength &lt;int&gt;,</span>
 <span class="co">#&gt; #   Experiment &lt;fct&gt;, Sample &lt;fct&gt;, BioSample &lt;fct&gt;, sample_name &lt;chr&gt;,</span>
 <span class="co">#&gt; #   TMM &lt;dbl&gt;, multiplier &lt;dbl&gt;, symbol &lt;chr&gt;, .abundant &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   GenomicRanges &lt;list&gt;</span></code></pre></div>
+<span class="co">#&gt; #   coordinate &lt;list&gt;</span></code></pre></div>
 <p>After we run <code>scale_abundance</code> we should see some columns have been added at the end. The <code>counts_scaled</code> column contains the scaled counts.</p>
 <p>We can visualise the difference of abundance densities before and after scaling. As tidybulk output is compatible with tidyverse, we can simply pipe it into standard tidyverse functions such as <code>filter</code>, <code>pivot_longer</code> and <code>ggplot</code>. We can also take advantage of ggplot’s <code>facet_wrap</code> to easily create multiple plots.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -457,22 +456,22 @@
 <span class="va">counts_scal_PCA</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 127,408 x 22</span>
 <span class="co">#&gt; [90m# Transcripts=15926 | Samples=8 | Assays=counts, counts_scaled[39m</span>
-<span class="co">#&gt;    transcript sample counts counts_scaled SampleName cell  dex   albut Run  </span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;</span>
-<span class="co">#&gt;  1 ENSG00000… SRR10…    679         961.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  2 ENSG00000… SRR10…    467         661.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  3 ENSG00000… SRR10…    260         368.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  4 ENSG00000… SRR10…     60          84.9 GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  5 ENSG00000… SRR10…   3251        4601.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  6 ENSG00000… SRR10…   1433        2028.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  7 ENSG00000… SRR10…    519         734.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  8 ENSG00000… SRR10…    394         558.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  9 ENSG00000… SRR10…    172         243.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt; 10 ENSG00000… SRR10…   2112        2989.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;    feature sample counts counts_scaled SampleName cell  dex   albut Run  </span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;</span>
+<span class="co">#&gt;  1 ENSG00… SRR10…    679         961.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  2 ENSG00… SRR10…    467         661.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  3 ENSG00… SRR10…    260         368.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  4 ENSG00… SRR10…     60          84.9 GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  5 ENSG00… SRR10…   3251        4601.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  6 ENSG00… SRR10…   1433        2028.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  7 ENSG00… SRR10…    519         734.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  8 ENSG00… SRR10…    394         558.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  9 ENSG00… SRR10…    172         243.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt; 10 ENSG00… SRR10…   2112        2989.  GSM1275862 N613… untrt untrt SRR1…</span>
 <span class="co">#&gt; # … with 40 more rows, and 13 more variables: avgLength &lt;int&gt;,</span>
 <span class="co">#&gt; #   Experiment &lt;fct&gt;, Sample &lt;fct&gt;, BioSample &lt;fct&gt;, sample_name &lt;chr&gt;,</span>
 <span class="co">#&gt; #   TMM &lt;dbl&gt;, multiplier &lt;dbl&gt;, sample.x &lt;chr&gt;, PC1 &lt;dbl&gt;, PC2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   symbol &lt;chr&gt;, .abundant &lt;lgl&gt;, GenomicRanges &lt;list&gt;</span></code></pre></div>
+<span class="co">#&gt; #   symbol &lt;chr&gt;, .abundant &lt;lgl&gt;, coordinate &lt;list&gt;</span></code></pre></div>
 <p>For plotting, we can select just the sample-wise information with <code>pivot_sample</code>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># take a look</span>
@@ -516,7 +515,7 @@
   <span class="co"># create heatmap</span>
   <span class="fu"><a href="https://rdrr.io/pkg/tidyHeatmap/man/heatmap-methods.html">heatmap</a></span><span class="op">(</span>
     .column <span class="op">=</span> <span class="va">sample_name</span>,
-    .row <span class="op">=</span> <span class="va">transcript</span>,
+    .row <span class="op">=</span> <span class="va">feature</span>,
     .value <span class="op">=</span> <span class="va">counts_scaled</span>,
     transform <span class="op">=</span> <span class="va">log1p</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
@@ -595,18 +594,18 @@
 <span class="va">de_all</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 127,408 x 44</span>
 <span class="co">#&gt; [90m# Transcripts=15926 | Samples=8 | Assays=counts, counts_scaled[39m</span>
-<span class="co">#&gt;    transcript sample counts counts_scaled SampleName cell  dex   albut Run  </span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;</span>
-<span class="co">#&gt;  1 ENSG00000… SRR10…    679         961.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  2 ENSG00000… SRR10…    467         661.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  3 ENSG00000… SRR10…    260         368.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  4 ENSG00000… SRR10…     60          84.9 GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  5 ENSG00000… SRR10…   3251        4601.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  6 ENSG00000… SRR10…   1433        2028.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  7 ENSG00000… SRR10…    519         734.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  8 ENSG00000… SRR10…    394         558.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt;  9 ENSG00000… SRR10…    172         243.  GSM1275862 N613… untrt untrt SRR1…</span>
-<span class="co">#&gt; 10 ENSG00000… SRR10…   2112        2989.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;    feature sample counts counts_scaled SampleName cell  dex   albut Run  </span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;</span>
+<span class="co">#&gt;  1 ENSG00… SRR10…    679         961.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  2 ENSG00… SRR10…    467         661.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  3 ENSG00… SRR10…    260         368.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  4 ENSG00… SRR10…     60          84.9 GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  5 ENSG00… SRR10…   3251        4601.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  6 ENSG00… SRR10…   1433        2028.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  7 ENSG00… SRR10…    519         734.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  8 ENSG00… SRR10…    394         558.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt;  9 ENSG00… SRR10…    172         243.  GSM1275862 N613… untrt untrt SRR1…</span>
+<span class="co">#&gt; 10 ENSG00… SRR10…   2112        2989.  GSM1275862 N613… untrt untrt SRR1…</span>
 <span class="co">#&gt; # … with 40 more rows, and 35 more variables: avgLength &lt;int&gt;,</span>
 <span class="co">#&gt; #   Experiment &lt;fct&gt;, Sample &lt;fct&gt;, BioSample &lt;fct&gt;, sample_name &lt;chr&gt;,</span>
 <span class="co">#&gt; #   TMM &lt;dbl&gt;, multiplier &lt;dbl&gt;, sample.x &lt;chr&gt;, PC1 &lt;dbl&gt;, PC2 &lt;dbl&gt;,</span>
@@ -617,7 +616,7 @@
 <span class="co">#&gt; #   voom_AveExpr &lt;dbl&gt;, voom_t &lt;dbl&gt;, voom_P.Value &lt;dbl&gt;, voom_adj.P.Val &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   voom_B &lt;dbl&gt;, deseq2_baseMean &lt;dbl&gt;, deseq2_log2FoldChange &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   deseq2_lfcSE &lt;dbl&gt;, deseq2_stat &lt;dbl&gt;, deseq2_pvalue &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   deseq2_padj &lt;dbl&gt;, GenomicRanges &lt;list&gt;</span></code></pre></div>
+<span class="co">#&gt; #   deseq2_padj &lt;dbl&gt;, coordinate &lt;list&gt;</span></code></pre></div>
 <p>This outputs the columns from each method such as log-fold change (logFC), false-discovery rate (FDR) and probability value (p-value). logFC is log2(treated/untreated).</p>
 <div id="comparison-of-methods" class="section level3">
 <h3 class="hasAnchor">
@@ -779,18 +778,18 @@
 <span class="va">BRCA</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 198,374 x 5</span>
 <span class="co">#&gt; [90m# Transcripts=9017 | Samples=22 | Assays=count[39m</span>
-<span class="co">#&gt;    transcript sample       count  time event_occurred</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt;          &lt;int&gt;</span>
-<span class="co">#&gt;  1 A1BG       TCGA-A2-A04P    13   102              1</span>
-<span class="co">#&gt;  2 A1BG-AS1   TCGA-A2-A04P    61   102              1</span>
-<span class="co">#&gt;  3 A2M        TCGA-A2-A04P 19277   102              1</span>
-<span class="co">#&gt;  4 A2MP1      TCGA-A2-A04P     9   102              1</span>
-<span class="co">#&gt;  5 AAAS       TCGA-A2-A04P  1917   102              1</span>
-<span class="co">#&gt;  6 AACS       TCGA-A2-A04P  1998   102              1</span>
-<span class="co">#&gt;  7 AADAT      TCGA-A2-A04P   212   102              1</span>
-<span class="co">#&gt;  8 AAGAB      TCGA-A2-A04P  1194   102              1</span>
-<span class="co">#&gt;  9 AAK1       TCGA-A2-A04P  1468   102              1</span>
-<span class="co">#&gt; 10 AAMP       TCGA-A2-A04P  5798   102              1</span>
+<span class="co">#&gt;    feature  sample       count  time event_occurred</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt;          &lt;int&gt;</span>
+<span class="co">#&gt;  1 A1BG     TCGA-A2-A04P    13   102              1</span>
+<span class="co">#&gt;  2 A1BG-AS1 TCGA-A2-A04P    61   102              1</span>
+<span class="co">#&gt;  3 A2M      TCGA-A2-A04P 19277   102              1</span>
+<span class="co">#&gt;  4 A2MP1    TCGA-A2-A04P     9   102              1</span>
+<span class="co">#&gt;  5 AAAS     TCGA-A2-A04P  1917   102              1</span>
+<span class="co">#&gt;  6 AACS     TCGA-A2-A04P  1998   102              1</span>
+<span class="co">#&gt;  7 AADAT    TCGA-A2-A04P   212   102              1</span>
+<span class="co">#&gt;  8 AAGAB    TCGA-A2-A04P  1194   102              1</span>
+<span class="co">#&gt;  9 AAK1     TCGA-A2-A04P  1468   102              1</span>
+<span class="co">#&gt; 10 AAMP     TCGA-A2-A04P  5798   102              1</span>
 <span class="co">#&gt; # … with 40 more rows</span></code></pre></div>
 <p>With tidybulk, we can easily infer the proportions of cell types within a tissue using one of several published methods (Cibersort <span class="citation">(Newman et al. 2015)</span>, EPIC <span class="citation">(Racle et al. 2017)</span> and llsr <span class="citation">(Abbas et al. 2009)</span>). Here we will use Cibersort which provides a default signature called LM22 to define the cell types. LM22 contains 547 genes that identify 22 human immune cell types.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
@@ -801,21 +800,20 @@
 <span class="va">BRCA_cell_type</span>
 <span class="co">#&gt; # A SummarizedExperiment-tibble abstraction: 198,374 x 27</span>
 <span class="co">#&gt; [90m# Transcripts=9017 | Samples=22 | Assays=count[39m</span>
-<span class="co">#&gt;    transcript sample count  time event_occurred cibersort..B.ce…</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;          &lt;int&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 A1BG       TCGA-…    13   102              1            0.201</span>
-<span class="co">#&gt;  2 A1BG-AS1   TCGA-…    61   102              1            0.201</span>
-<span class="co">#&gt;  3 A2M        TCGA-… 19277   102              1            0.201</span>
-<span class="co">#&gt;  4 A2MP1      TCGA-…     9   102              1            0.201</span>
-<span class="co">#&gt;  5 AAAS       TCGA-…  1917   102              1            0.201</span>
-<span class="co">#&gt;  6 AACS       TCGA-…  1998   102              1            0.201</span>
-<span class="co">#&gt;  7 AADAT      TCGA-…   212   102              1            0.201</span>
-<span class="co">#&gt;  8 AAGAB      TCGA-…  1194   102              1            0.201</span>
-<span class="co">#&gt;  9 AAK1       TCGA-…  1468   102              1            0.201</span>
-<span class="co">#&gt; 10 AAMP       TCGA-…  5798   102              1            0.201</span>
-<span class="co">#&gt; # … with 40 more rows, and 21 more variables: cibersort..B.cells.memory &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   cibersort..Plasma.cells &lt;dbl&gt;, cibersort..T.cells.CD8 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   cibersort..T.cells.CD4.naive &lt;dbl&gt;,</span>
+<span class="co">#&gt;    feature sample count  time event_occurred cibersort..B.ce… cibersort..B.ce…</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;          &lt;int&gt;            &lt;dbl&gt;            &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 A1BG    TCGA-…    13   102              1            0.201                0</span>
+<span class="co">#&gt;  2 A1BG-A… TCGA-…    61   102              1            0.201                0</span>
+<span class="co">#&gt;  3 A2M     TCGA-… 19277   102              1            0.201                0</span>
+<span class="co">#&gt;  4 A2MP1   TCGA-…     9   102              1            0.201                0</span>
+<span class="co">#&gt;  5 AAAS    TCGA-…  1917   102              1            0.201                0</span>
+<span class="co">#&gt;  6 AACS    TCGA-…  1998   102              1            0.201                0</span>
+<span class="co">#&gt;  7 AADAT   TCGA-…   212   102              1            0.201                0</span>
+<span class="co">#&gt;  8 AAGAB   TCGA-…  1194   102              1            0.201                0</span>
+<span class="co">#&gt;  9 AAK1    TCGA-…  1468   102              1            0.201                0</span>
+<span class="co">#&gt; 10 AAMP    TCGA-…  5798   102              1            0.201                0</span>
+<span class="co">#&gt; # … with 40 more rows, and 20 more variables: cibersort..Plasma.cells &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   cibersort..T.cells.CD8 &lt;dbl&gt;, cibersort..T.cells.CD4.naive &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   cibersort..T.cells.CD4.memory.resting &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   cibersort..T.cells.CD4.memory.activated &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   cibersort..T.cells.follicular.helper &lt;dbl&gt;,</span>
@@ -1058,7 +1056,7 @@
 <span class="co">#&gt;  8 ACGA…  7683     1926              276               14            3.59   7683</span>
 <span class="co">#&gt;  9 CGGC…  3500     1092               75               10            2.14   3500</span>
 <span class="co">#&gt; 10 ATAG…  3092      974               37               10            1.20   3092</span>
-<span class="co">#&gt; # … with 290 more rows, and 1 more variable: high_mitochondrion &lt;otlr.flt&gt;</span></code></pre></div>
+<span class="co">#&gt; # … with 290 more rows, and 1 more variable: high_mitochondrion &lt;lgl&gt;</span></code></pre></div>
 <p>Finally, we join the mitochondrial information back to the original data so we will be able to filter out the cells with high mitochondrial content.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mito_info_one_dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidySingleCellExperiment/man/dplyr-methods.html">left_join</a></span><span class="op">(</span><span class="va">one_dataset</span>, <span class="va">mito_info_one_dataset</span>, by <span class="op">=</span> <span class="st">"cell"</span><span class="op">)</span>
@@ -1081,7 +1079,7 @@
 <span class="co">#&gt; # … with 290 more rows, and 9 more variables: G2M.Score &lt;dbl&gt;, ident &lt;fct&gt;,</span>
 <span class="co">#&gt; #   sum &lt;dbl&gt;, detected &lt;int&gt;, subsets_Mito_sum &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   subsets_Mito_detected &lt;int&gt;, subsets_Mito_percent &lt;dbl&gt;, total &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   high_mitochondrion &lt;otlr.flt&gt;</span></code></pre></div>
+<span class="co">#&gt; #   high_mitochondrion &lt;lgl&gt;</span></code></pre></div>
 <p>The steps above perform the mitochondrial QC analysis for one dataset. To analyse all 10 datasets we could repeat the steps for each dataset or create a function and apply it to each dataset. However, a more efficient way is to use nesting. We can nest our data by dataset.</p>
 <p><img src="../inst/vignettes/nesting.png" width="600px"></p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
@@ -1260,16 +1258,16 @@
 <span class="co">#&gt; [90m# Transcripts=51958 | Assays=reconstructed[39m</span>
 <span class="co">#&gt;    cell       label batch corrected1 corrected2 corrected3 corrected4 corrected5</span>
 <span class="co">#&gt;    &lt;chr&gt;      &lt;fct&gt; &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 CCAGTCACA… 5         1   -0.0644      0.334      0.0725    -0.0560    0.0739 </span>
-<span class="co">#&gt;  2 ATGAGCACA… 3         1   -0.178      -0.0167     0.122     -0.122    -0.0233 </span>
-<span class="co">#&gt;  3 TATGAATGG… 7         1   -0.0604      0.0357    -0.127     -0.293    -0.0128 </span>
-<span class="co">#&gt;  4 CATATAGAC… 11        1   -0.0760      0.282      0.121     -0.0546    0.00285</span>
-<span class="co">#&gt;  5 GAGGCAGAC… 1         1   -0.0758      0.0424    -0.0977    -0.259    -0.0248 </span>
-<span class="co">#&gt;  6 AGCTGCCTT… 2         1   -0.117       0.0242     0.0729    -0.159    -0.0170 </span>
-<span class="co">#&gt;  7 TGATTAGAT… 4         1   -0.146       0.0752     0.143     -0.0488   -0.0915 </span>
-<span class="co">#&gt;  8 ACGAAGCTC… 4         1   -0.119       0.108      0.127     -0.0505   -0.0624 </span>
-<span class="co">#&gt;  9 CGGCATCTT… 5         1   -0.00945     0.407      0.0466    -0.0803    0.0522 </span>
-<span class="co">#&gt; 10 ATAGCGTGC… 5         1   -0.0561      0.367      0.105     -0.0589    0.0609 </span>
+<span class="co">#&gt;  1 CCAGTCACA… 4         1   -0.0644      0.334     -0.0725     0.0560    0.0739 </span>
+<span class="co">#&gt;  2 ATGAGCACA… 2         1   -0.178      -0.0167    -0.122      0.122    -0.0233 </span>
+<span class="co">#&gt;  3 TATGAATGG… 6         1   -0.0604      0.0357     0.127      0.293    -0.0128 </span>
+<span class="co">#&gt;  4 CATATAGAC… 11        1   -0.0760      0.282     -0.121      0.0545    0.00285</span>
+<span class="co">#&gt;  5 GAGGCAGAC… 1         1   -0.0758      0.0424     0.0977     0.259    -0.0248 </span>
+<span class="co">#&gt;  6 AGCTGCCTT… 5         1   -0.117       0.0242    -0.0729     0.159    -0.0170 </span>
+<span class="co">#&gt;  7 TGATTAGAT… 3         1   -0.146       0.0752    -0.143      0.0488   -0.0915 </span>
+<span class="co">#&gt;  8 ACGAAGCTC… 3         1   -0.119       0.108     -0.127      0.0505   -0.0624 </span>
+<span class="co">#&gt;  9 CGGCATCTT… 4         1   -0.00948     0.407     -0.0466     0.0803    0.0522 </span>
+<span class="co">#&gt; 10 ATAGCGTGC… 4         1   -0.0561      0.367     -0.105      0.0589    0.0610 </span>
 <span class="co">#&gt; # … with 2,889 more rows</span></code></pre></div>
 <p>Thanks to tidySingleCellExperiment we can interrogate the object with tidyverse commands and use <code>count</code> to count the number of cells in each cluster.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
@@ -1278,13 +1276,13 @@
 <span class="co">#&gt; # A tibble: 11 x 2</span>
 <span class="co">#&gt;    label     n</span>
 <span class="co">#&gt;    &lt;fct&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 1       480</span>
-<span class="co">#&gt;  2 2       576</span>
-<span class="co">#&gt;  3 3       721</span>
-<span class="co">#&gt;  4 4       351</span>
-<span class="co">#&gt;  5 5       339</span>
-<span class="co">#&gt;  6 6        21</span>
-<span class="co">#&gt;  7 7       256</span>
+<span class="co">#&gt;  1 1       460</span>
+<span class="co">#&gt;  2 2       795</span>
+<span class="co">#&gt;  3 3       367</span>
+<span class="co">#&gt;  4 4       339</span>
+<span class="co">#&gt;  5 5       486</span>
+<span class="co">#&gt;  6 6       276</span>
+<span class="co">#&gt;  7 7        21</span>
 <span class="co">#&gt;  8 8        74</span>
 <span class="co">#&gt;  9 9        41</span>
 <span class="co">#&gt; 10 10       14</span>
@@ -1345,10 +1343,15 @@
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Reference cell types</span>
 <span class="va">blueprint</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/datasets.html">BlueprintEncodeData</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; snapshotDate(): 2021-04-08</span>
+<span class="co">#&gt; using temporary cache /tmp/Rtmp78FZMV/BiocFileCache</span>
+<span class="co">#&gt; snapshotDate(): 2020-10-27</span>
 <span class="co">#&gt; see ?celldex and browseVignettes('celldex') for documentation</span>
+<span class="co">#&gt; downloading 1 resources</span>
+<span class="co">#&gt; retrieving 1 resource</span>
 <span class="co">#&gt; loading from cache</span>
 <span class="co">#&gt; see ?celldex and browseVignettes('celldex') for documentation</span>
+<span class="co">#&gt; downloading 1 resources</span>
+<span class="co">#&gt; retrieving 1 resource</span>
 <span class="co">#&gt; loading from cache</span>
 
 <span class="va">cell_type</span> <span class="op">&lt;-</span>
@@ -1373,12 +1376,12 @@
 <span class="co">#&gt;    label first.labels   </span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;          </span>
 <span class="co">#&gt;  1 1     NK cells       </span>
-<span class="co">#&gt;  2 2     Fibroblasts    </span>
-<span class="co">#&gt;  3 3     Skeletal muscle</span>
-<span class="co">#&gt;  4 4     B-cells        </span>
-<span class="co">#&gt;  5 5     Monocytes      </span>
-<span class="co">#&gt;  6 6     Smooth muscle  </span>
-<span class="co">#&gt;  7 7     NK cells       </span>
+<span class="co">#&gt;  2 2     Skeletal muscle</span>
+<span class="co">#&gt;  3 3     B-cells        </span>
+<span class="co">#&gt;  4 4     Monocytes      </span>
+<span class="co">#&gt;  5 5     Fibroblasts    </span>
+<span class="co">#&gt;  6 6     NK cells       </span>
+<span class="co">#&gt;  7 7     Smooth muscle  </span>
 <span class="co">#&gt;  8 8     Neutrophils    </span>
 <span class="co">#&gt;  9 9     Macrophages    </span>
 <span class="co">#&gt; 10 10    B-cells        </span>
@@ -1396,16 +1399,16 @@
 <span class="co">#&gt; [90m# Transcripts=51958 | Assays=reconstructed[39m</span>
 <span class="co">#&gt;    cell  first.labels batch label corrected1 corrected2 corrected3 corrected4</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 CCAG… Monocytes        1 5       -0.0644      0.334      0.0725    -0.0560</span>
-<span class="co">#&gt;  2 ATGA… Skeletal mu…     1 3       -0.178      -0.0167     0.122     -0.122 </span>
-<span class="co">#&gt;  3 TATG… NK cells         1 7       -0.0604      0.0357    -0.127     -0.293 </span>
-<span class="co">#&gt;  4 CATA… Monocytes        1 11      -0.0760      0.282      0.121     -0.0546</span>
-<span class="co">#&gt;  5 GAGG… NK cells         1 1       -0.0758      0.0424    -0.0977    -0.259 </span>
-<span class="co">#&gt;  6 AGCT… Fibroblasts      1 2       -0.117       0.0242     0.0729    -0.159 </span>
-<span class="co">#&gt;  7 TGAT… B-cells          1 4       -0.146       0.0752     0.143     -0.0488</span>
-<span class="co">#&gt;  8 ACGA… B-cells          1 4       -0.119       0.108      0.127     -0.0505</span>
-<span class="co">#&gt;  9 CGGC… Monocytes        1 5       -0.00945     0.407      0.0466    -0.0803</span>
-<span class="co">#&gt; 10 ATAG… Monocytes        1 5       -0.0561      0.367      0.105     -0.0589</span>
+<span class="co">#&gt;  1 CCAG… Monocytes        1 4       -0.0644      0.334     -0.0725     0.0560</span>
+<span class="co">#&gt;  2 ATGA… Skeletal mu…     1 2       -0.178      -0.0167    -0.122      0.122 </span>
+<span class="co">#&gt;  3 TATG… NK cells         1 6       -0.0604      0.0357     0.127      0.293 </span>
+<span class="co">#&gt;  4 CATA… Monocytes        1 11      -0.0760      0.282     -0.121      0.0545</span>
+<span class="co">#&gt;  5 GAGG… NK cells         1 1       -0.0758      0.0424     0.0977     0.259 </span>
+<span class="co">#&gt;  6 AGCT… Fibroblasts      1 5       -0.117       0.0242    -0.0729     0.159 </span>
+<span class="co">#&gt;  7 TGAT… B-cells          1 3       -0.146       0.0752    -0.143      0.0488</span>
+<span class="co">#&gt;  8 ACGA… B-cells          1 3       -0.119       0.108     -0.127      0.0505</span>
+<span class="co">#&gt;  9 CGGC… Monocytes        1 4       -0.00948     0.407     -0.0466     0.0803</span>
+<span class="co">#&gt; 10 ATAG… Monocytes        1 4       -0.0561      0.367     -0.105      0.0589</span>
 <span class="co">#&gt; # … with 2,889 more rows, and 4 more variables: corrected5 &lt;dbl&gt;, UMAP1 &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   UMAP2 &lt;dbl&gt;, UMAP3 &lt;dbl&gt;</span></code></pre></div>
 <p>We can easily summarise the results. For example, we can see how cell type classification overlaps with cluster classification.</p>
@@ -1415,15 +1418,15 @@
 <span class="co">#&gt; # A tibble: 11 x 3</span>
 <span class="co">#&gt;    label first.labels        n</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;           &lt;int&gt;</span>
-<span class="co">#&gt;  1 1     NK cells          480</span>
+<span class="co">#&gt;  1 1     NK cells          460</span>
 <span class="co">#&gt;  2 10    B-cells            14</span>
 <span class="co">#&gt;  3 11    Monocytes          26</span>
-<span class="co">#&gt;  4 2     Fibroblasts       576</span>
-<span class="co">#&gt;  5 3     Skeletal muscle   721</span>
-<span class="co">#&gt;  6 4     B-cells           351</span>
-<span class="co">#&gt;  7 5     Monocytes         339</span>
-<span class="co">#&gt;  8 6     Smooth muscle      21</span>
-<span class="co">#&gt;  9 7     NK cells          256</span>
+<span class="co">#&gt;  4 2     Skeletal muscle   795</span>
+<span class="co">#&gt;  5 3     B-cells           367</span>
+<span class="co">#&gt;  6 4     Monocytes         339</span>
+<span class="co">#&gt;  7 5     Fibroblasts       486</span>
+<span class="co">#&gt;  8 6     NK cells          276</span>
+<span class="co">#&gt;  9 7     Smooth muscle      21</span>
 <span class="co">#&gt; 10 8     Neutrophils        74</span>
 <span class="co">#&gt; 11 9     Macrophages        41</span></code></pre></div>
 </div>
@@ -1451,9 +1454,9 @@
 <p>Record package and version information with <code>sessionInfo</code></p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R Under development (unstable) (2021-04-05 r80145)</span>
+<span class="co">#&gt; R version 4.0.3 (2020-10-10)</span>
 <span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
-<span class="co">#&gt; Running under: Ubuntu 20.04.2 LTS</span>
+<span class="co">#&gt; Running under: Ubuntu 20.04 LTS</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Matrix products: default</span>
 <span class="co">#&gt; BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.8.so</span>
@@ -1472,183 +1475,176 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
 <span class="co">#&gt;  [1] tidySingleCellExperiment_1.1.1 ggbeeswarm_0.6.0              </span>
-<span class="co">#&gt;  [3] celldex_1.1.0                  EnsDb.Hsapiens.v86_2.99.0     </span>
-<span class="co">#&gt;  [5] ensembldb_2.15.2               AnnotationFilter_1.15.0       </span>
-<span class="co">#&gt;  [7] GenomicFeatures_1.43.8         AnnotationDbi_1.53.1          </span>
-<span class="co">#&gt;  [9] SingleR_1.5.5                  batchelor_1.7.13              </span>
-<span class="co">#&gt; [11] igraph_1.2.6                   scran_1.19.17                 </span>
-<span class="co">#&gt; [13] scuttle_1.1.18                 scater_1.19.11                </span>
-<span class="co">#&gt; [15] SingleCellExperiment_1.13.14   tidySummarizedExperiment_1.1.3</span>
+<span class="co">#&gt;  [3] celldex_1.0.0                  EnsDb.Hsapiens.v86_2.99.0     </span>
+<span class="co">#&gt;  [5] ensembldb_2.14.0               AnnotationFilter_1.14.0       </span>
+<span class="co">#&gt;  [7] GenomicFeatures_1.42.3         AnnotationDbi_1.52.0          </span>
+<span class="co">#&gt;  [9] scuttle_1.0.4                  SingleR_1.4.1                 </span>
+<span class="co">#&gt; [11] batchelor_1.6.2                igraph_1.2.6                  </span>
+<span class="co">#&gt; [13] scran_1.18.6                   scater_1.18.6                 </span>
+<span class="co">#&gt; [15] SingleCellExperiment_1.12.0    tidySummarizedExperiment_1.1.4</span>
 <span class="co">#&gt; [17] tidybulk_1.3.1                 tidyHeatmap_1.2.2             </span>
 <span class="co">#&gt; [19] GGally_2.1.1                   ggrepel_0.9.1                 </span>
 <span class="co">#&gt; [21] plotly_4.9.3                   purrr_0.3.4                   </span>
 <span class="co">#&gt; [23] ggplot2_3.3.3                  stringr_1.4.0                 </span>
 <span class="co">#&gt; [25] readr_1.4.0                    tidyr_1.1.3                   </span>
 <span class="co">#&gt; [27] dplyr_1.0.5                    tibble_3.1.0                  </span>
-<span class="co">#&gt; [29] airway_1.11.0                  SummarizedExperiment_1.21.3   </span>
-<span class="co">#&gt; [31] Biobase_2.51.0                 GenomicRanges_1.43.4          </span>
-<span class="co">#&gt; [33] GenomeInfoDb_1.27.10           IRanges_2.25.7                </span>
-<span class="co">#&gt; [35] S4Vectors_0.29.15              BiocGenerics_0.37.1           </span>
-<span class="co">#&gt; [37] MatrixGenerics_1.3.1           matrixStats_0.58.0            </span>
+<span class="co">#&gt; [29] airway_1.10.0                  SummarizedExperiment_1.20.0   </span>
+<span class="co">#&gt; [31] Biobase_2.50.0                 GenomicRanges_1.42.0          </span>
+<span class="co">#&gt; [33] GenomeInfoDb_1.26.7            IRanges_2.24.1                </span>
+<span class="co">#&gt; [35] S4Vectors_0.28.1               BiocGenerics_0.36.0           </span>
+<span class="co">#&gt; [37] MatrixGenerics_1.2.1           matrixStats_0.58.0            </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
 <span class="co">#&gt;   [1] utf8_1.2.1                               </span>
 <span class="co">#&gt;   [2] tidyselect_1.1.0                         </span>
-<span class="co">#&gt;   [3] RSQLite_2.2.5                            </span>
+<span class="co">#&gt;   [3] RSQLite_2.2.6                            </span>
 <span class="co">#&gt;   [4] htmlwidgets_1.5.3                        </span>
-<span class="co">#&gt;   [5] grid_4.1.0                               </span>
-<span class="co">#&gt;   [6] BiocParallel_1.25.5                      </span>
+<span class="co">#&gt;   [5] grid_4.0.3                               </span>
+<span class="co">#&gt;   [6] BiocParallel_1.24.1                      </span>
 <span class="co">#&gt;   [7] munsell_0.5.0                            </span>
-<span class="co">#&gt;   [8] ScaledMatrix_0.99.2                      </span>
-<span class="co">#&gt;   [9] codetools_0.2-18                         </span>
-<span class="co">#&gt;  [10] ragg_1.1.2                               </span>
-<span class="co">#&gt;  [11] preprocessCore_1.53.2                    </span>
-<span class="co">#&gt;  [12] statmod_1.4.35                           </span>
-<span class="co">#&gt;  [13] withr_2.4.1                              </span>
-<span class="co">#&gt;  [14] colorspace_2.0-0                         </span>
-<span class="co">#&gt;  [15] filelock_1.0.2                           </span>
-<span class="co">#&gt;  [16] highr_0.8                                </span>
-<span class="co">#&gt;  [17] knitr_1.31                               </span>
-<span class="co">#&gt;  [18] rstudioapi_0.13                          </span>
-<span class="co">#&gt;  [19] labeling_0.4.2                           </span>
-<span class="co">#&gt;  [20] GenomeInfoDbData_1.2.4                   </span>
-<span class="co">#&gt;  [21] bit64_4.0.5                              </span>
-<span class="co">#&gt;  [22] farver_2.1.0                             </span>
-<span class="co">#&gt;  [23] pheatmap_1.0.12                          </span>
-<span class="co">#&gt;  [24] rprojroot_2.0.2                          </span>
-<span class="co">#&gt;  [25] vctrs_0.3.7                              </span>
-<span class="co">#&gt;  [26] generics_0.1.0                           </span>
-<span class="co">#&gt;  [27] xfun_0.22                                </span>
-<span class="co">#&gt;  [28] dittoSeq_1.3.7                           </span>
-<span class="co">#&gt;  [29] BiocFileCache_1.99.1                     </span>
-<span class="co">#&gt;  [30] R6_2.5.0                                 </span>
-<span class="co">#&gt;  [31] doParallel_1.0.16                        </span>
-<span class="co">#&gt;  [32] clue_0.3-58                              </span>
-<span class="co">#&gt;  [33] rsvd_1.0.3                               </span>
-<span class="co">#&gt;  [34] locfit_1.5-9.4                           </span>
-<span class="co">#&gt;  [35] bitops_1.0-6                             </span>
-<span class="co">#&gt;  [36] cachem_1.0.4                             </span>
-<span class="co">#&gt;  [37] reshape_0.8.8                            </span>
-<span class="co">#&gt;  [38] DelayedArray_0.17.10                     </span>
-<span class="co">#&gt;  [39] assertthat_0.2.1                         </span>
-<span class="co">#&gt;  [40] promises_1.2.0.1                         </span>
-<span class="co">#&gt;  [41] BiocIO_1.1.2                             </span>
-<span class="co">#&gt;  [42] scales_1.1.1                             </span>
-<span class="co">#&gt;  [43] beeswarm_0.3.1                           </span>
-<span class="co">#&gt;  [44] debugme_1.1.0                            </span>
-<span class="co">#&gt;  [45] gtable_0.3.0                             </span>
-<span class="co">#&gt;  [46] beachmat_2.7.7                           </span>
-<span class="co">#&gt;  [47] Cairo_1.5-12.2                           </span>
-<span class="co">#&gt;  [48] rlang_0.4.10                             </span>
-<span class="co">#&gt;  [49] genefilter_1.73.1                        </span>
-<span class="co">#&gt;  [50] systemfonts_1.0.1                        </span>
-<span class="co">#&gt;  [51] GlobalOptions_0.1.2                      </span>
-<span class="co">#&gt;  [52] splines_4.1.0                            </span>
-<span class="co">#&gt;  [53] rtracklayer_1.51.5                       </span>
-<span class="co">#&gt;  [54] lazyeval_0.2.2                           </span>
-<span class="co">#&gt;  [55] BiocManager_1.30.12                      </span>
-<span class="co">#&gt;  [56] yaml_2.2.1                               </span>
-<span class="co">#&gt;  [57] httpuv_1.5.5                             </span>
-<span class="co">#&gt;  [58] tools_4.1.0                              </span>
-<span class="co">#&gt;  [59] ellipsis_0.3.1                           </span>
-<span class="co">#&gt;  [60] jquerylib_0.1.3                          </span>
-<span class="co">#&gt;  [61] RColorBrewer_1.1-2                       </span>
-<span class="co">#&gt;  [62] proxy_0.4-25                             </span>
-<span class="co">#&gt;  [63] ggridges_0.5.3                           </span>
-<span class="co">#&gt;  [64] Rcpp_1.0.6                               </span>
-<span class="co">#&gt;  [65] plyr_1.8.6                               </span>
-<span class="co">#&gt;  [66] sparseMatrixStats_1.3.7                  </span>
-<span class="co">#&gt;  [67] progress_1.2.2                           </span>
-<span class="co">#&gt;  [68] zlibbioc_1.37.0                          </span>
-<span class="co">#&gt;  [69] RCurl_1.98-1.3                           </span>
-<span class="co">#&gt;  [70] ps_1.6.0                                 </span>
-<span class="co">#&gt;  [71] prettyunits_1.1.1                        </span>
-<span class="co">#&gt;  [72] GetoptLong_1.0.5                         </span>
-<span class="co">#&gt;  [73] viridis_0.5.1                            </span>
-<span class="co">#&gt;  [74] cowplot_1.1.1                            </span>
-<span class="co">#&gt;  [75] cluster_2.1.1                            </span>
-<span class="co">#&gt;  [76] fs_1.5.0                                 </span>
-<span class="co">#&gt;  [77] magrittr_2.0.1                           </span>
-<span class="co">#&gt;  [78] RSpectra_0.16-0                          </span>
-<span class="co">#&gt;  [79] data.table_1.14.0                        </span>
-<span class="co">#&gt;  [80] ResidualMatrix_1.1.0                     </span>
-<span class="co">#&gt;  [81] circlize_0.4.12                          </span>
-<span class="co">#&gt;  [82] ProtGenerics_1.23.8                      </span>
-<span class="co">#&gt;  [83] mime_0.10                                </span>
-<span class="co">#&gt;  [84] hms_1.0.0                                </span>
-<span class="co">#&gt;  [85] evaluate_0.14                            </span>
-<span class="co">#&gt;  [86] xtable_1.8-4                             </span>
-<span class="co">#&gt;  [87] XML_3.99-0.6                             </span>
-<span class="co">#&gt;  [88] gridExtra_2.3                            </span>
-<span class="co">#&gt;  [89] shape_1.4.5                              </span>
-<span class="co">#&gt;  [90] compiler_4.1.0                           </span>
-<span class="co">#&gt;  [91] biomaRt_2.47.7                           </span>
-<span class="co">#&gt;  [92] crayon_1.4.1                             </span>
-<span class="co">#&gt;  [93] htmltools_0.5.1.1                        </span>
-<span class="co">#&gt;  [94] later_1.1.0.1                            </span>
-<span class="co">#&gt;  [95] geneplotter_1.69.0                       </span>
-<span class="co">#&gt;  [96] DBI_1.1.1                                </span>
-<span class="co">#&gt;  [97] ExperimentHub_1.99.0                     </span>
-<span class="co">#&gt;  [98] dbplyr_2.1.1                             </span>
-<span class="co">#&gt;  [99] ComplexHeatmap_2.7.9                     </span>
-<span class="co">#&gt; [100] rappdirs_0.3.3                           </span>
-<span class="co">#&gt; [101] Matrix_1.3-2                             </span>
-<span class="co">#&gt; [102] cli_2.4.0                                </span>
-<span class="co">#&gt; [103] metapod_0.99.5                           </span>
-<span class="co">#&gt; [104] pkgconfig_2.0.3                          </span>
-<span class="co">#&gt; [105] pkgdown_1.6.1                            </span>
-<span class="co">#&gt; [106] GenomicAlignments_1.27.2                 </span>
-<span class="co">#&gt; [107] foreach_1.5.1                            </span>
-<span class="co">#&gt; [108] annotate_1.69.2                          </span>
-<span class="co">#&gt; [109] vipor_0.4.5                              </span>
-<span class="co">#&gt; [110] bslib_0.2.4                              </span>
-<span class="co">#&gt; [111] dqrng_0.2.1                              </span>
-<span class="co">#&gt; [112] XVector_0.31.1                           </span>
-<span class="co">#&gt; [113] digest_0.6.27                            </span>
-<span class="co">#&gt; [114] Biostrings_2.59.2                        </span>
-<span class="co">#&gt; [115] rmarkdown_2.7                            </span>
-<span class="co">#&gt; [116] uwot_0.1.10                              </span>
-<span class="co">#&gt; [117] edgeR_3.33.3                             </span>
-<span class="co">#&gt; [118] DelayedMatrixStats_1.13.5                </span>
-<span class="co">#&gt; [119] restfulr_0.0.13                          </span>
-<span class="co">#&gt; [120] curl_4.3                                 </span>
-<span class="co">#&gt; [121] shiny_1.6.0                              </span>
-<span class="co">#&gt; [122] Rsamtools_2.7.1                          </span>
-<span class="co">#&gt; [123] rjson_0.2.20                             </span>
-<span class="co">#&gt; [124] lifecycle_1.0.0                          </span>
-<span class="co">#&gt; [125] jsonlite_1.7.2                           </span>
-<span class="co">#&gt; [126] BiocNeighbors_1.9.4                      </span>
-<span class="co">#&gt; [127] desc_1.3.0                               </span>
-<span class="co">#&gt; [128] viridisLite_0.3.0                        </span>
-<span class="co">#&gt; [129] limma_3.47.12                            </span>
-<span class="co">#&gt; [130] fansi_0.4.2                              </span>
-<span class="co">#&gt; [131] pillar_1.5.1                             </span>
-<span class="co">#&gt; [132] lattice_0.20-41                          </span>
-<span class="co">#&gt; [133] rladiestunis2021tidytranscriptomics_0.8.0</span>
-<span class="co">#&gt; [134] KEGGREST_1.31.1                          </span>
-<span class="co">#&gt; [135] fastmap_1.1.0                            </span>
-<span class="co">#&gt; [136] httr_1.4.2                               </span>
-<span class="co">#&gt; [137] survival_3.2-10                          </span>
-<span class="co">#&gt; [138] interactiveDisplayBase_1.29.0            </span>
-<span class="co">#&gt; [139] glue_1.4.2                               </span>
-<span class="co">#&gt; [140] FNN_1.1.3                                </span>
-<span class="co">#&gt; [141] png_0.1-7                                </span>
-<span class="co">#&gt; [142] iterators_1.0.13                         </span>
-<span class="co">#&gt; [143] BiocVersion_3.13.1                       </span>
-<span class="co">#&gt; [144] bluster_1.1.6                            </span>
-<span class="co">#&gt; [145] bit_4.0.4                                </span>
-<span class="co">#&gt; [146] class_7.3-18                             </span>
-<span class="co">#&gt; [147] stringi_1.5.3                            </span>
-<span class="co">#&gt; [148] sass_0.3.1                               </span>
-<span class="co">#&gt; [149] blob_1.2.1                               </span>
-<span class="co">#&gt; [150] textshaping_0.3.3                        </span>
-<span class="co">#&gt; [151] AnnotationHub_2.99.0                     </span>
-<span class="co">#&gt; [152] DESeq2_1.31.18                           </span>
-<span class="co">#&gt; [153] org.Hs.eg.db_3.12.0                      </span>
-<span class="co">#&gt; [154] BiocSingular_1.7.2                       </span>
-<span class="co">#&gt; [155] memoise_2.0.0                            </span>
-<span class="co">#&gt; [156] irlba_2.3.3                              </span>
-<span class="co">#&gt; [157] e1071_1.7-6</span></code></pre></div>
+<span class="co">#&gt;   [8] ragg_1.1.2                               </span>
+<span class="co">#&gt;   [9] preprocessCore_1.52.1                    </span>
+<span class="co">#&gt;  [10] statmod_1.4.35                           </span>
+<span class="co">#&gt;  [11] withr_2.4.1                              </span>
+<span class="co">#&gt;  [12] colorspace_2.0-0                         </span>
+<span class="co">#&gt;  [13] highr_0.8                                </span>
+<span class="co">#&gt;  [14] knitr_1.31                               </span>
+<span class="co">#&gt;  [15] rstudioapi_0.13                          </span>
+<span class="co">#&gt;  [16] labeling_0.4.2                           </span>
+<span class="co">#&gt;  [17] GenomeInfoDbData_1.2.4                   </span>
+<span class="co">#&gt;  [18] bit64_4.0.5                              </span>
+<span class="co">#&gt;  [19] farver_2.1.0                             </span>
+<span class="co">#&gt;  [20] pheatmap_1.0.12                          </span>
+<span class="co">#&gt;  [21] rprojroot_2.0.2                          </span>
+<span class="co">#&gt;  [22] vctrs_0.3.7                              </span>
+<span class="co">#&gt;  [23] generics_0.1.0                           </span>
+<span class="co">#&gt;  [24] xfun_0.22                                </span>
+<span class="co">#&gt;  [25] dittoSeq_1.2.5                           </span>
+<span class="co">#&gt;  [26] BiocFileCache_1.14.0                     </span>
+<span class="co">#&gt;  [27] R6_2.5.0                                 </span>
+<span class="co">#&gt;  [28] clue_0.3-58                              </span>
+<span class="co">#&gt;  [29] rsvd_1.0.3                               </span>
+<span class="co">#&gt;  [30] locfit_1.5-9.4                           </span>
+<span class="co">#&gt;  [31] bitops_1.0-6                             </span>
+<span class="co">#&gt;  [32] cachem_1.0.4                             </span>
+<span class="co">#&gt;  [33] reshape_0.8.8                            </span>
+<span class="co">#&gt;  [34] DelayedArray_0.16.3                      </span>
+<span class="co">#&gt;  [35] assertthat_0.2.1                         </span>
+<span class="co">#&gt;  [36] promises_1.2.0.1                         </span>
+<span class="co">#&gt;  [37] scales_1.1.1                             </span>
+<span class="co">#&gt;  [38] beeswarm_0.3.1                           </span>
+<span class="co">#&gt;  [39] debugme_1.1.0                            </span>
+<span class="co">#&gt;  [40] gtable_0.3.0                             </span>
+<span class="co">#&gt;  [41] beachmat_2.6.4                           </span>
+<span class="co">#&gt;  [42] Cairo_1.5-12.2                           </span>
+<span class="co">#&gt;  [43] rlang_0.4.10                             </span>
+<span class="co">#&gt;  [44] genefilter_1.72.1                        </span>
+<span class="co">#&gt;  [45] systemfonts_1.0.1                        </span>
+<span class="co">#&gt;  [46] GlobalOptions_0.1.2                      </span>
+<span class="co">#&gt;  [47] splines_4.0.3                            </span>
+<span class="co">#&gt;  [48] rtracklayer_1.50.0                       </span>
+<span class="co">#&gt;  [49] lazyeval_0.2.2                           </span>
+<span class="co">#&gt;  [50] BiocManager_1.30.12                      </span>
+<span class="co">#&gt;  [51] yaml_2.2.1                               </span>
+<span class="co">#&gt;  [52] httpuv_1.5.5                             </span>
+<span class="co">#&gt;  [53] tools_4.0.3                              </span>
+<span class="co">#&gt;  [54] ellipsis_0.3.1                           </span>
+<span class="co">#&gt;  [55] jquerylib_0.1.3                          </span>
+<span class="co">#&gt;  [56] RColorBrewer_1.1-2                       </span>
+<span class="co">#&gt;  [57] proxy_0.4-25                             </span>
+<span class="co">#&gt;  [58] ggridges_0.5.3                           </span>
+<span class="co">#&gt;  [59] Rcpp_1.0.6                               </span>
+<span class="co">#&gt;  [60] plyr_1.8.6                               </span>
+<span class="co">#&gt;  [61] sparseMatrixStats_1.2.1                  </span>
+<span class="co">#&gt;  [62] progress_1.2.2                           </span>
+<span class="co">#&gt;  [63] zlibbioc_1.36.0                          </span>
+<span class="co">#&gt;  [64] RCurl_1.98-1.3                           </span>
+<span class="co">#&gt;  [65] ps_1.6.0                                 </span>
+<span class="co">#&gt;  [66] prettyunits_1.1.1                        </span>
+<span class="co">#&gt;  [67] openssl_1.4.3                            </span>
+<span class="co">#&gt;  [68] GetoptLong_1.0.5                         </span>
+<span class="co">#&gt;  [69] viridis_0.5.1                            </span>
+<span class="co">#&gt;  [70] cowplot_1.1.1                            </span>
+<span class="co">#&gt;  [71] cluster_2.1.1                            </span>
+<span class="co">#&gt;  [72] fs_1.5.0                                 </span>
+<span class="co">#&gt;  [73] magrittr_2.0.1                           </span>
+<span class="co">#&gt;  [74] RSpectra_0.16-0                          </span>
+<span class="co">#&gt;  [75] data.table_1.14.0                        </span>
+<span class="co">#&gt;  [76] ResidualMatrix_1.0.0                     </span>
+<span class="co">#&gt;  [77] circlize_0.4.12                          </span>
+<span class="co">#&gt;  [78] ProtGenerics_1.22.0                      </span>
+<span class="co">#&gt;  [79] mime_0.10                                </span>
+<span class="co">#&gt;  [80] hms_1.0.0                                </span>
+<span class="co">#&gt;  [81] evaluate_0.14                            </span>
+<span class="co">#&gt;  [82] xtable_1.8-4                             </span>
+<span class="co">#&gt;  [83] XML_3.99-0.6                             </span>
+<span class="co">#&gt;  [84] gridExtra_2.3                            </span>
+<span class="co">#&gt;  [85] shape_1.4.5                              </span>
+<span class="co">#&gt;  [86] compiler_4.0.3                           </span>
+<span class="co">#&gt;  [87] biomaRt_2.46.3                           </span>
+<span class="co">#&gt;  [88] crayon_1.4.1                             </span>
+<span class="co">#&gt;  [89] htmltools_0.5.1.1                        </span>
+<span class="co">#&gt;  [90] later_1.1.0.1                            </span>
+<span class="co">#&gt;  [91] geneplotter_1.68.0                       </span>
+<span class="co">#&gt;  [92] DBI_1.1.1                                </span>
+<span class="co">#&gt;  [93] ExperimentHub_1.16.0                     </span>
+<span class="co">#&gt;  [94] dbplyr_2.1.1                             </span>
+<span class="co">#&gt;  [95] ComplexHeatmap_2.6.2                     </span>
+<span class="co">#&gt;  [96] rappdirs_0.3.3                           </span>
+<span class="co">#&gt;  [97] Matrix_1.3-2                             </span>
+<span class="co">#&gt;  [98] cli_2.4.0                                </span>
+<span class="co">#&gt;  [99] pkgconfig_2.0.3                          </span>
+<span class="co">#&gt; [100] pkgdown_1.6.1                            </span>
+<span class="co">#&gt; [101] GenomicAlignments_1.26.0                 </span>
+<span class="co">#&gt; [102] xml2_1.3.2                               </span>
+<span class="co">#&gt; [103] annotate_1.68.0                          </span>
+<span class="co">#&gt; [104] vipor_0.4.5                              </span>
+<span class="co">#&gt; [105] bslib_0.2.4                              </span>
+<span class="co">#&gt; [106] dqrng_0.2.1                              </span>
+<span class="co">#&gt; [107] XVector_0.30.0                           </span>
+<span class="co">#&gt; [108] digest_0.6.27                            </span>
+<span class="co">#&gt; [109] Biostrings_2.58.0                        </span>
+<span class="co">#&gt; [110] rmarkdown_2.7                            </span>
+<span class="co">#&gt; [111] uwot_0.1.10                              </span>
+<span class="co">#&gt; [112] edgeR_3.32.1                             </span>
+<span class="co">#&gt; [113] DelayedMatrixStats_1.12.3                </span>
+<span class="co">#&gt; [114] curl_4.3                                 </span>
+<span class="co">#&gt; [115] shiny_1.6.0                              </span>
+<span class="co">#&gt; [116] Rsamtools_2.6.0                          </span>
+<span class="co">#&gt; [117] rjson_0.2.20                             </span>
+<span class="co">#&gt; [118] lifecycle_1.0.0                          </span>
+<span class="co">#&gt; [119] jsonlite_1.7.2                           </span>
+<span class="co">#&gt; [120] BiocNeighbors_1.8.2                      </span>
+<span class="co">#&gt; [121] desc_1.3.0                               </span>
+<span class="co">#&gt; [122] viridisLite_0.3.0                        </span>
+<span class="co">#&gt; [123] askpass_1.1                              </span>
+<span class="co">#&gt; [124] limma_3.46.0                             </span>
+<span class="co">#&gt; [125] fansi_0.4.2                              </span>
+<span class="co">#&gt; [126] pillar_1.5.1                             </span>
+<span class="co">#&gt; [127] lattice_0.20-41                          </span>
+<span class="co">#&gt; [128] rladiestunis2021tidytranscriptomics_0.8.0</span>
+<span class="co">#&gt; [129] fastmap_1.1.0                            </span>
+<span class="co">#&gt; [130] httr_1.4.2                               </span>
+<span class="co">#&gt; [131] survival_3.2-10                          </span>
+<span class="co">#&gt; [132] interactiveDisplayBase_1.28.0            </span>
+<span class="co">#&gt; [133] glue_1.4.2                               </span>
+<span class="co">#&gt; [134] FNN_1.1.3                                </span>
+<span class="co">#&gt; [135] png_0.1-7                                </span>
+<span class="co">#&gt; [136] BiocVersion_3.12.0                       </span>
+<span class="co">#&gt; [137] bluster_1.0.0                            </span>
+<span class="co">#&gt; [138] bit_4.0.4                                </span>
+<span class="co">#&gt; [139] class_7.3-18                             </span>
+<span class="co">#&gt; [140] stringi_1.5.3                            </span>
+<span class="co">#&gt; [141] sass_0.3.1                               </span>
+<span class="co">#&gt; [142] blob_1.2.1                               </span>
+<span class="co">#&gt; [143] textshaping_0.3.3                        </span>
+<span class="co">#&gt; [144] AnnotationHub_2.22.0                     </span>
+<span class="co">#&gt; [145] DESeq2_1.30.1                            </span>
+<span class="co">#&gt; [146] org.Hs.eg.db_3.12.0                      </span>
+<span class="co">#&gt; [147] BiocSingular_1.6.0                       </span>
+<span class="co">#&gt; [148] memoise_2.0.0                            </span>
+<span class="co">#&gt; [149] irlba_2.3.3                              </span>
+<span class="co">#&gt; [150] e1071_1.7-6</span></code></pre></div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
