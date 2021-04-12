@@ -167,7 +167,7 @@ counts <-
   airway %>%
   mutate(sample_name = str_remove(sample, "SRR1039")) %>%
   mutate(symbol = AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
-    keys = transcript,
+    keys = feature,
     keytype = "ENSEMBL",
     column = "SYMBOL",
     multiVals = "first"
@@ -337,7 +337,7 @@ counts_scal_PCA %>%
   # create heatmap
   heatmap(
     .column = sample_name,
-    .row = transcript,
+    .row = feature,
     .value = counts_scaled,
     transform = log1p
   ) %>%
